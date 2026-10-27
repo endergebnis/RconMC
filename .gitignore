@@ -1,0 +1,28 @@
+.DS_Store
+
+# Maven
+target/
+
+# Lokale Zugangsdaten und Konfiguration
+.env
+.env.*
+!.env.example
+*.env
+
+# Logs
+*.log
+
+# Lokale H2-Datenbank
+data/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Eclipse
+.classpath
+.project
+.settings/

@@ -1,0 +1,23 @@
+# Die Env-Variablen-Namen entsprechen bewusst denen der Rust-Version (RustyrconMC),
+# damit bestehende .env-/Compose-Dateien weiterverwendet werden koennen.
+rconmc:
+  discord:
+    token: ${DISCORD_TOKEN}
+    guild-id: ${GUILD_ID}
+    channel-id: ${WHITELIST_CHANNEL_ID}
+    admin-role-id: ${ADMIN_ROLE_ID:}
+    registration-message: ${WHITELIST_MESSAGE:}
+  rcon:
+    host: ${RCON_HOST}
+    port: ${RCON_PORT:25575}
+    password: ${RCON_PASSWORD}
+
+spring:
+  datasource:
+    # H2-Dateidatenbank; DB_PATH ist der Basispfad ohne Endung (H2 haengt .mv.db an).
+    url: jdbc:h2:file:${DB_PATH:./data/rconmc}
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update

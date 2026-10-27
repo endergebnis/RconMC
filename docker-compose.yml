@@ -1,0 +1,26 @@
+services:
+  rconmc:
+    image: eclipse-temurin:25-jre
+    container_name: rconmc
+    working_dir: /app
+    volumes:
+      - ./target/rconmc.jar:/app/app.jar:ro
+      - ./data:/data
+    command: ["java", "-jar", "/app/app.jar"]
+    environment:
+      DISCORD_TOKEN: "DEIN_BOT_TOKEN"
+      GUILD_ID: "DEINE_SERVER_ID"
+      WHITELIST_CHANNEL_ID: "DEINE_CHANNEL_ID"
+      ADMIN_ROLE_ID: "DEINE_ADMIN_ROLLEN_ID" # optional, kann leer bleiben
+      RCON_HOST: "127.0.0.1"
+      RCON_PORT: "25575"
+      RCON_PASSWORD: "DEIN_RCON_PASSWORT"
+      DB_PATH: "/data/rconmc"
+      WHITELIST_MESSAGE: "Klicke auf den Button, um dich mit deinem Minecraft-Namen zu registrieren."
+    restart: unless-stopped
+    networks:
+      - ai-stack-network
+
+networks:
+  ai-stack-network:
+    external: true
